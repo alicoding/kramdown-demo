@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kramdown Demo</title>
+  
+  <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/7.0/styles/github.min.css">
+  <script src="http://yandex.st/highlightjs/7.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="input">
+  <textarea id="kramdown-input"># Please Note: #
+
+This is an unofficial editable demo, the official complete documentation for [kramdown](https://github.com/gettalong/kramdown/) is [here](http://kramdown.rubyforge.org/).
+
+-----
+
+### Code ###
+
+[highlight.js](http://softwaremaniacs.org/soft/highlight/en/) can be used to enable client-side code syntax highlighting
+
+`inline` or as a block (auto detect language):
+
+~~~
+def ruby
+  puts "ruby"
+end
+~~~
+
+~~~
+def hello(): 
+ print "python"
+~~~
+
+Force language:
+
+{:.javascript}
+    function hello() {
+      alert("Javascript");
+    }
+
+----
+
+### Lists ###
+
+1. One
+2. Two
+3. Three
+
+* Lorem
+* Ipsum
+  * Dolar
+  * Etc.
+* Dolar
+
+Example
+: Meep
+: Meep
+
+
+
+----
+
+### LaTeX ###
+
+Using [MathJax](http://www.mathjax.org/). 
+
+Inline: $$ \varphi = \frac{1+\sqrt{5}}{2} = 1.61803\,39887\ldots. $$
+
+Block:
+
+$$
+
+\int_0^{2\pi}\sin{x}\ dx=0
+$$
+
+
+----
+
+### Tables ###
+
+| Header1 | Header2 | Header3 |
+|:--------|:-------:|--------:|
+| cell1   | cell2   | cell3   |
+| cell4   | cell5   | cell6   |
+|----
+| cell1   | cell2   | cell3   |
+| cell4   | cell5   | cell6   |
+|=====
+| Foot1   | Foot2   | Foot3
+{: rules="groups"}
+
+Etc.
+
+  </textarea>
+</div>
+
+<div id="output">
+</div>
+
+<script>
+$(function() {
+  $('#kramdown-input').keyup(function() {
+    $.post('/', { text: $(this).val() }, function(data) {
+      $('#output').html(data);
+      $('pre code').each(function(i, e) { hljs.highlightBlock(e) });
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+    });
+  });
+
+  $('#kramdown-input').trigger('keyup');
+});
+</script>
+
+</body>
+</html>
