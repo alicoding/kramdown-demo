@@ -6,7 +6,7 @@ html, body {
 	color: #444444;
 }
 
-#input, #output, textarea { 
+* { 
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
@@ -38,6 +38,7 @@ html, body {
 	height: 99%;
 	padding: 20px;
 	outline: 0;
+	font-size: 0.8em;
 }
 
 pre code {
